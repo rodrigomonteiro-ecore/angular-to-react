@@ -14,7 +14,7 @@ export default defineConfig({
   },
   webServer: [
     {
-      command: 'node test/mock-backend/server.js',
+      command: 'node test/mock-backend/server.cjs',
       cwd: path.resolve(__dirname, '../..'),
       port: 4201,
       reuseExistingServer: true,

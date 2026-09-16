@@ -1,0 +1,62 @@
+[
+  {
+    "file": "home.spec.ts",
+    "scenario": "Displays the application title",
+    "status": "fail",
+    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting. Additionally, mock-backend/server.js uses CommonJS require() but package.json declares \"type\": \"module\"."
+  },
+  {
+    "file": "home.spec.ts",
+    "scenario": "Shows the framework logo",
+    "status": "fail",
+    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+  },
+  {
+    "file": "home.spec.ts",
+    "scenario": "Shows the congratulations message",
+    "status": "fail",
+    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+  },
+  {
+    "file": "home.spec.ts",
+    "scenario": "Displays a divider with separator role",
+    "status": "fail",
+    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+  },
+  {
+    "file": "home.spec.ts",
+    "scenario": "Has a router outlet present",
+    "status": "fail",
+    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+  },
+  {
+    "file": "home.spec.ts",
+    "scenario": "Renders exactly 6 pill links",
+    "status": "fail",
+    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+  },
+  {
+    "file": "home.spec.ts",
+    "scenario": "Pill links have correct text",
+    "status": "fail",
+    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+  },
+  {
+    "file": "home.spec.ts",
+    "scenario": "Pill links have correct hrefs",
+    "status": "fail",
+    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+  },
+  {
+    "file": "home.spec.ts",
+    "scenario": "Pill links open in a new tab",
+    "status": "fail",
+    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+  },
+  {
+    "file": "home.spec.ts",
+    "scenario": "Renders 3 social links with correct labels",
+    "status": "fail",
+    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+  }
+]
