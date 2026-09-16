@@ -1,0 +1,6 @@
+{
+  "include": ["**"],
+  "exclude": ["**/packages/**", "**/darwin_arm64*/**"],
+  "sourceMap": true,
+  "report-dir": ".a2r/coverage-report"
+}

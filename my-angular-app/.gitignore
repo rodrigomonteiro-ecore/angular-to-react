@@ -42,3 +42,11 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Coverage instrumentation
+/instrumented
+/.nyc_output
+/.a2r/coverage-raw.json
+/.a2r/coverage-report
+/.a2r/pids
+/test-results
