@@ -1,0 +1,17 @@
+{
+  "build_system": "angular-cli-esbuild",
+  "app_dir": "src/app",
+  "build_command": "ng build",
+  "dist_dir": "dist/my-angular-app",
+  "state_management": "none",
+  "api_surface": [],
+  "ui_framework": "none",
+  "angular_major_version": 22,
+  "routes": [
+    {
+      "path": "/",
+      "component": "App",
+      "description": "Root component — default Angular scaffold placeholder page"
+    }
+  ]
+}
