@@ -1,0 +1,237 @@
+import { Page, expect, Locator } from '@playwright/test';
+
+/**
+ * Page Object Model for the Tower of Hanoi game.
+ *
+ * All CSS / aria / role selectors live here. Scenario files call
+ * only these domain-language methods and never touch the DOM directly.
+ *
+ * Method signatures are the stable contract — when migrating from
+ * Angular to React only the method **bodies** change.
+ */
+export class HanoiPage {
+  constructor(private readonly page: Page) {}
+
+  // ─── Navigation ────────────────────────────────────────────
+
+  async goto(): Promise<void> {
+    await this.page.goto('/');
+  }
+
+  // ─── Page header ───────────────────────────────────────────
+
+  async title(): Promise<string> {
+    const el = this.page.locator('h1');
+    await el.waitFor({ state: 'visible' });
+    return (await el.textContent())!;
+  }
+
+  async isSubtitleVisible(): Promise<boolean> {
+    const el = this.page.locator('.subtitle');
+    await el.waitFor({ state: 'visible' });
+    return el.isVisible();
+  }
+
+  // ─── Peg labels ────────────────────────────────────────────
+
+  async pegLabels(): Promise<string[]> {
+    const labels = this.page.locator('.peg-label');
+    await expect(labels).not.toHaveCount(0);
+    return labels.allTextContents();
+  }
+
+  async pegLabelCount(): Promise<number> {
+    return this.page.locator('.peg-label').count();
+  }
+
+  // ─── Disk-count selector ───────────────────────────────────
+
+  async activeDiskButtonText(): Promise<string> {
+    const btn = this.page.locator('.disk-btn.active');
+    await btn.waitFor({ state: 'visible' });
+    return (await btn.textContent())!.trim();
+  }
+
+  async selectDiskCount(n: 3 | 4 | 5 | 6 | 7): Promise<void> {
+    const idx = n - 3;
+    await this.page.locator('.disk-buttons .disk-btn').nth(idx).click();
+    await this.page.locator('.disk-btn.active').filter({ hasText: String(n) }).waitFor();
+  }
+
+  // ─── Disks on a peg ───────────────────────────────────────
+
+  async diskLabelsOnPeg(pegNumber: 1 | 2 | 3): Promise<string[]> {
+    const peg = this.page.locator(`[aria-label="Peg ${pegNumber}"]`);
+    return peg.locator('.disk-label').allTextContents();
+  }
+
+  async diskCountOnPeg(pegNumber: 1 | 2 | 3): Promise<number> {
+    return (await this.diskLabelsOnPeg(pegNumber)).length;
+  }
+
+  // ─── Stats (moves / optimal) ──────────────────────────────
+
+  async moveCount(): Promise<string> {
+    const el = this.page.locator('.stat-value').nth(0);
+    await el.waitFor({ state: 'visible' });
+    return (await el.textContent())!.trim();
+  }
+
+  async expectMoveCount(expected: string): Promise<void> {
+    await expect(this.page.locator('.stat-value').nth(0)).toHaveText(expected);
+  }
+
+  async optimalMoves(): Promise<string> {
+    const el = this.page.locator('.stat-value').nth(1);
+    await el.waitFor({ state: 'visible' });
+    return (await el.textContent())!.trim();
+  }
+
+  async expectOptimalMoves(expected: string): Promise<void> {
+    await expect(this.page.locator('.stat-value').nth(1)).toHaveText(expected);
+  }
+
+  // ─── Hint ─────────────────────────────────────────────────
+
+  async hintText(): Promise<string> {
+    const el = this.page.locator('.hint');
+    return ((await el.textContent()) ?? '').trim();
+  }
+
+  async hintContains(text: string): Promise<void> {
+    await expect(this.page.locator('.hint')).toContainText(text);
+  }
+
+  // ─── Router-outlet (Angular-specific) ─────────────────────
+
+  async hasRouterOutlet(): Promise<boolean> {
+    return (await this.page.locator('router-outlet').count()) > 0;
+  }
+
+  // ─── Peg interaction ──────────────────────────────────────
+
+  async clickPeg(pegNumber: 1 | 2 | 3): Promise<void> {
+    const peg = this.page.locator(`[aria-label="Peg ${pegNumber}"]`);
+    await peg.waitFor({ state: 'visible' });
+    await peg.click();
+    await this.page.waitForTimeout(50);
+  }
+
+  async pressPegKey(pegNumber: 1 | 2 | 3, key: string): Promise<void> {
+    const peg = this.page.locator(`[aria-label="Peg ${pegNumber}"]`);
+    await peg.press(key);
+    await this.page.waitForTimeout(50);
+  }
+
+  // ─── Selection indicator ──────────────────────────────────
+
+  async isSelectionIndicatorVisible(): Promise<boolean> {
+    return (await this.page.locator('.selection-indicator').count()) > 0 &&
+           (await this.page.locator('.selection-indicator').first().isVisible());
+  }
+
+  async selectionIndicatorCount(): Promise<number> {
+    return this.page.locator('.selection-indicator').count();
+  }
+
+  async selectionIndicatorContainsText(text: string): Promise<void> {
+    await expect(this.page.locator('.selection-indicator')).toContainText(text);
+  }
+
+  async isPegSelected(pegNumber: 1 | 2 | 3): Promise<void> {
+    const col = this.page.locator('.peg-column').nth(pegNumber - 1);
+    await expect(col).toHaveClass(/selected/);
+  }
+
+  // ─── Reset ────────────────────────────────────────────────
+
+  async clickReset(): Promise<void> {
+    const btn = this.page.locator('.reset-btn');
+    await btn.waitFor({ state: 'visible' });
+    await btn.click();
+    // Wait for framework change detection after reset
+    await this.page.waitForTimeout(100);
+  }
+
+  // ─── Win banner ───────────────────────────────────────────
+
+  async isWinBannerVisible(): Promise<boolean> {
+    const banner = this.page.locator('.win-banner');
+    await banner.waitFor({ state: 'visible', timeout: 5000 });
+    return banner.isVisible();
+  }
+
+  async winBannerCount(): Promise<number> {
+    return this.page.locator('.win-banner').count();
+  }
+
+  async winBannerContainsText(text: string): Promise<void> {
+    await expect(this.page.locator('.win-banner')).toContainText(text);
+  }
+
+  async isPerfectScoreVisible(): Promise<boolean> {
+    return (await this.page.locator('.perfect').count()) > 0;
+  }
+
+  async perfectScoreCount(): Promise<number> {
+    return this.page.locator('.perfect').count();
+  }
+
+  async perfectScoreContainsText(text: string): Promise<void> {
+    await expect(this.page.locator('.perfect')).toContainText(text);
+  }
+
+  // ─── Disk styling ─────────────────────────────────────────
+
+  async diskColorsOnPeg(pegNumber: 1 | 2 | 3): Promise<string[]> {
+    const disks = this.page.locator('.peg-column').nth(pegNumber - 1).locator('.disk');
+    const count = await disks.count();
+    if (count === 0) throw new Error(`No disks found on peg ${pegNumber}`);
+    const colors: string[] = [];
+    for (let i = 0; i < count; i++) {
+      const bg = await disks.nth(i).evaluate(el => getComputedStyle(el).backgroundColor);
+      colors.push(bg);
+    }
+    return colors;
+  }
+
+  async diskWidthsOnPeg(pegNumber: 1 | 2 | 3): Promise<number[]> {
+    const disks = this.page.locator('.peg-column').nth(pegNumber - 1).locator('.disk');
+    const count = await disks.count();
+    if (count === 0) throw new Error(`No disks found on peg ${pegNumber}`);
+    const widths: number[] = [];
+    for (let i = 0; i < count; i++) {
+      const w = await disks.nth(i).evaluate(el => el.getBoundingClientRect().width);
+      widths.push(w);
+    }
+    return widths;
+  }
+
+  async diskCountOnFirstPeg(): Promise<number> {
+    return this.page.locator('.peg-column').first().locator('.disk').count();
+  }
+
+  // ─── Composite helpers ────────────────────────────────────
+
+  /** Move a disk from one peg to another (select source, then target). */
+  async moveDisk(from: 1 | 2 | 3, to: 1 | 2 | 3): Promise<void> {
+    await this.clickPeg(from);
+    await this.clickPeg(to);
+  }
+
+  /**
+   * Solve Tower of Hanoi recursively.
+   * Moves n disks from `from` to `to` using `aux` as auxiliary.
+   */
+  async solveHanoi(
+    n: number,
+    from: 1 | 2 | 3,
+    to: 1 | 2 | 3,
+    aux: 1 | 2 | 3,
+  ): Promise<void> {
+    if (n === 0) return;
+    await this.solveHanoi(n - 1, from, aux, to);
+    await this.moveDisk(from, to);
+    await this.solveHanoi(n - 1, aux, to, from);
+  }
+}

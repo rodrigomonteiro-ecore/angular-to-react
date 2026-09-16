@@ -1,0 +1,7 @@
+{
+  "approach": "nyc-instrument",
+  "line": 97.83,
+  "branch": 89.47,
+  "branch_denominator": 19,
+  "files_instrumented": 4
+}
