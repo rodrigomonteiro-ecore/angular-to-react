@@ -23,11 +23,11 @@ export default defineConfig({
       timeout: 10_000,
     },
     {
-      command: 'node test/coverage/serve-instrumented.js',
+      command: 'npx vite --port 4200',
       cwd: path.resolve(__dirname, '../..'),
       port: 4200,
       reuseExistingServer: true,
-      timeout: 10_000,
+      timeout: 15_000,
     },
   ],
 });
