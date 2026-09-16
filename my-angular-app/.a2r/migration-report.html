@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angular to React Migration Report</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #1a1a1a; background: #f8f9fa; padding: 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.35rem; margin: 2rem 0 1rem; border-bottom: 2px solid #dee2e6; padding-bottom: 0.5rem; }
+    .summary { background: #fff; border: 1px solid #dee2e6; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem; }
+    .summary p { margin: 0.25rem 0; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden; }
+    th, td { text-align: left; padding: 0.6rem 1rem; border-bottom: 1px solid #eee; }
+    th { background: #f1f3f5; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; }
+    .pass { color: #2b8a3e; font-weight: 600; }
+    .fail { color: #c92a2a; font-weight: 600; }
+    .screenshots { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .screenshot-card { flex: 1; min-width: 300px; background: #fff; border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden; }
+    .screenshot-card h3 { padding: 0.75rem 1rem; background: #f1f3f5; font-size: 0.95rem; }
+    .screenshot-card img { width: 100%; display: block; }
+    .route-section { margin-bottom: 2rem; }
+    .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+    .badge-pass { background: #d3f9d8; color: #2b8a3e; }
+    .badge-fail { background: #ffe3e3; color: #c92a2a; }
+    .meta { color: #868e96; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Angular to React Migration Report</h1>
+    <p class="meta">Project: my-angular-app | Angular 22 &rarr; React 18 + Vite + React Router v6</p>
+
+    <div class="summary">
+      <p><strong>Business Logic:</strong> <span class="badge badge-pass">10/10 PASS</span></p>
+      <p><strong>UI Comparison:</strong> <span class="badge badge-pass">1/1 routes PASS</span> (diff ratio: 0.31%, threshold: 30%)</p>
+    </div>
+
+    <h2>1. Business Logic</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Scenario</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Title &amp; Hero &mdash; Application Title</td>
+          <td>Verifies the page displays &ldquo;Hello, my-angular-app&rdquo; as the main heading.</td>
+          <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Title &amp; Hero &mdash; Framework Logo</td>
+          <td>Verifies the Angular/brand SVG logo is visible on the page.</td>
+          <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Title &amp; Hero &mdash; Congratulations Message</td>
+          <td>Verifies the congratulations text is displayed below the title.</td>
+          <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Layout &mdash; Divider with Separator Role</td>
+          <td>Verifies a vertical divider with role=&ldquo;separator&rdquo; exists between content sections.</td>
+          <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Layout &mdash; Router Outlet Present</td>
+          <td>Verifies the router outlet/root container is present for child route rendering.</td>
+          <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Pill Links &mdash; Renders 6 Links</td>
+          <td>Verifies exactly 6 documentation pill links are rendered.</td>
+          <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Pill Links &mdash; Correct Text</td>
+          <td>Verifies each pill link displays the correct label text.</td>
+          <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Pill Links &mdash; Correct Hrefs</td>
+          <td>Verifies each pill link points to the correct URL.</td>
+          <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Pill Links &mdash; Open in New Tab</td>
+          <td>Verifies all pill links have target=&ldquo;_blank&rdquo; for new-tab behavior.</td>
+          <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Social Links &mdash; 3 Links with Labels</td>
+          <td>Verifies 3 social media links (Github, X, Youtube) with correct aria-labels.</td>
+          <td><span class="pass">PASS</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>2. UI Comparison</h2>
+    <div class="route-section">
+      <h3>Route: / (root) &mdash; <span class="badge badge-pass">PASS</span> &mdash; Diff: 0.31%</h3>
+      <div class="screenshots">
+        <div class="screenshot-card">
+          <h3>Angular (Baseline)</h3>
+          <img src="screenshots/root/angular.png" alt="Angular screenshot of root route">
+        </div>
+        <div class="screenshot-card">
+          <h3>React (Migrated)</h3>
+          <img src="screenshots/root/react.png" alt="React screenshot of root route">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
