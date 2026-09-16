@@ -1,0 +1,11 @@
+{
+  "build_system": "angular-cli-vite",
+  "app_dir": "my-angular-app",
+  "build_command": "npm run build",
+  "dist_dir": "my-angular-app/dist/my-angular-app",
+  "state_management": "none",
+  "api_surface": [],
+  "ui_framework": "none",
+  "angular_major_version": 22,
+  "routes": ["/"]
+}
