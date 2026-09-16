@@ -2,6 +2,8 @@ import { defineConfig } from '@playwright/test';
 import path from 'path';
 
 export default defineConfig({
+  globalSetup: require.resolve('./global-setup'),
+  globalTeardown: require.resolve('./global-teardown'),
   testDir: './scenarios',
   testMatch: '**/*.spec.ts',
   timeout: 30_000,

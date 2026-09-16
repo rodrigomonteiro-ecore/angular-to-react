@@ -1,19 +1,12 @@
 import { test, expect } from '@playwright/test';
 import { HanoiPage } from '../pom';
-const { mergeCoverageFromPage, resetCoverage } = require('../coverage-helper');
-const { remapAndFilterCoverage } = require('../remap-coverage');
+const { mergeCoverageFromPage } = require('../coverage-helper');
 
-test.beforeAll(() => {
-  resetCoverage();
-});
 
 test.afterEach(async ({ page }) => {
   await mergeCoverageFromPage(page);
 });
 
-test.afterAll(() => {
-  remapAndFilterCoverage();
-});
 
 // ─── Move Mechanics ───────────────────────────────────────
 
