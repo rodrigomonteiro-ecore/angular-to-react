@@ -1,0 +1,25 @@
+{
+  "build_system": "angular-cli-esbuild",
+  "app_dir": "src",
+  "build_command": "ng build",
+  "dist_dir": "dist/my-angular-app/browser",
+  "state_management": "angular-signals",
+  "api_surface": [],
+  "ui_framework": "none",
+  "angular_major_version": 22,
+  "routes": [
+    {
+      "path": "/",
+      "component": "App",
+      "description": "Tower of Hanoi game - single page application with no additional routes"
+    }
+  ],
+  "notes": {
+    "standalone_components": true,
+    "forms_used": false,
+    "http_calls": false,
+    "third_party_runtime_deps": [],
+    "test_framework": "vitest",
+    "style_preprocessor": "scss"
+  }
+}
