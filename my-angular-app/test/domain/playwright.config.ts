@@ -8,7 +8,7 @@ export default defineConfig({
   workers: 1, // single worker to avoid coverage data loss
   retries: 0,
   use: {
-    baseURL: 'http://localhost:4200',
+    baseURL: 'http://localhost:5173',
     headless: true,
     viewport: { width: 1280, height: 720 },
   },
@@ -21,11 +21,11 @@ export default defineConfig({
       timeout: 10_000,
     },
     {
-      command: 'node test/domain/serve-instrumented.js',
+      command: 'npm run dev -- --port 5173',
       cwd: path.resolve(__dirname, '../..'),
-      port: 4200,
+      url: 'http://localhost:5173',
       reuseExistingServer: true,
-      timeout: 10_000,
+      timeout: 15_000,
     },
   ],
 });

@@ -7,7 +7,9 @@ import { type Page, type Locator, expect } from '@playwright/test';
  * the public methods on this class — never touch selectors directly.
  *
  * Method signatures are the contract shared between Angular and React.
- * When migrating to React, only the method **bodies** change.
+ * This is the **React** variant — selectors target the React DOM which
+ * preserves plain CSS classes alongside CSS Module hashes (dual class
+ * names pattern, e.g. `className={`${styles['host']} main`}`).
  */
 export class HomePage {
   private readonly page: Page;
@@ -20,7 +22,7 @@ export class HomePage {
 
   async navigate(): Promise<void> {
     await this.page.goto('/');
-    // Wait for the main content to be present before interacting
+    // React app renders <main className="... main"> as root content area
     await this.page.locator('main.main').waitFor({ state: 'visible' });
   }
 
@@ -32,9 +34,10 @@ export class HomePage {
     return (await heading.textContent()) ?? '';
   }
 
-  // ── Angular Logo ──────────────────────────────────────────
+  // ── Logo ──────────────────────────────────────────────────
 
   async isLogoVisible(): Promise<boolean> {
+    // React keeps the plain class "angular-logo" on the SVG element
     const logo = this.page.locator('svg.angular-logo');
     await expect(logo).toBeVisible();
     return true;
@@ -43,6 +46,7 @@ export class HomePage {
   // ── Congratulations Message ───────────────────────────────
 
   async getCongratulationsText(): Promise<string> {
+    // React: <div className="... left-side"><p>...</p></div>
     const paragraph = this.page.locator('.left-side p');
     await expect(paragraph).toBeVisible();
     return (await paragraph.textContent()) ?? '';
@@ -128,6 +132,8 @@ export class HomePage {
   // ── Router Outlet ─────────────────────────────────────────
 
   async isRouterOutletPresent(): Promise<boolean> {
+    // React wraps <Outlet /> inside a <router-outlet> custom element
+    // for backward-compatible POM detection
     const outlet = this.page.locator('router-outlet');
     await expect(outlet).toBeAttached();
     return true;
