@@ -1,62 +1,62 @@
 [
   {
     "file": "home.spec.ts",
-    "scenario": "Displays the application title",
-    "status": "fail",
-    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting. Additionally, mock-backend/server.js uses CommonJS require() but package.json declares \"type\": \"module\"."
+    "scenario": "displays the application title",
+    "status": "pass",
+    "error": ""
   },
   {
     "file": "home.spec.ts",
-    "scenario": "Shows the framework logo",
-    "status": "fail",
-    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+    "scenario": "shows the framework logo",
+    "status": "pass",
+    "error": ""
   },
   {
     "file": "home.spec.ts",
-    "scenario": "Shows the congratulations message",
+    "scenario": "shows the congratulations message",
     "status": "fail",
-    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+    "error": "Locator 'div[class*=\"leftSide\"] p' not found — CSS module App.module.css does not define .leftSide class, so styles['leftSide'] resolves to undefined and the div has no class attribute"
   },
   {
     "file": "home.spec.ts",
-    "scenario": "Displays a divider with separator role",
-    "status": "fail",
-    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+    "scenario": "displays a divider with separator role",
+    "status": "pass",
+    "error": ""
   },
   {
     "file": "home.spec.ts",
-    "scenario": "Has a router outlet present",
-    "status": "fail",
-    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+    "scenario": "has a router outlet present",
+    "status": "pass",
+    "error": ""
   },
   {
     "file": "home.spec.ts",
-    "scenario": "Renders exactly 6 pill links",
-    "status": "fail",
-    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+    "scenario": "renders exactly 6 pill links",
+    "status": "pass",
+    "error": ""
   },
   {
     "file": "home.spec.ts",
-    "scenario": "Pill links have correct text",
-    "status": "fail",
-    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+    "scenario": "pill links have the correct text",
+    "status": "pass",
+    "error": ""
   },
   {
     "file": "home.spec.ts",
-    "scenario": "Pill links have correct hrefs",
-    "status": "fail",
-    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+    "scenario": "pill links have the correct hrefs",
+    "status": "pass",
+    "error": ""
   },
   {
     "file": "home.spec.ts",
-    "scenario": "Pill links open in a new tab",
-    "status": "fail",
-    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+    "scenario": "pill links open in a new tab",
+    "status": "pass",
+    "error": ""
   },
   {
     "file": "home.spec.ts",
-    "scenario": "Renders 3 social links with correct labels",
-    "status": "fail",
-    "error": "BLOCKED: package.json contains unresolved git merge conflict markers (line 20), preventing Vite dev server from starting."
+    "scenario": "renders 3 social links with correct labels",
+    "status": "pass",
+    "error": ""
   }
 ]

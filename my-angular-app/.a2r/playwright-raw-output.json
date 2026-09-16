@@ -1,0 +1,496 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+      "/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/node_modules/.bin/playwright",
+      "test",
+      "--config=.a2r/playwright-domain.config.ts",
+      "--reporter=json"
+    ],
+    "configFile": "/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/.a2r/playwright-domain.config.ts",
+    "rootDir": "/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/test/domain/scenarios",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/.a2r/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/test/domain/scenarios",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "home.spec.ts",
+      "file": "home.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Home page — title & hero",
+          "file": "home.spec.ts",
+          "line": 26,
+          "column": 6,
+          "specs": [
+            {
+              "title": "displays the application title",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 459,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-16T17:50:58.431Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d318381359a9b96acb1e-ae7ad2c83e794df9c205",
+              "file": "home.spec.ts",
+              "line": 27,
+              "column": 3
+            },
+            {
+              "title": "shows the framework logo",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 124,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-16T17:50:59.028Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d318381359a9b96acb1e-7b92d190ad811498fb37",
+              "file": "home.spec.ts",
+              "line": 35,
+              "column": 3
+            },
+            {
+              "title": "shows the congratulations message",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5146,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('div[class*=\"leftSide\"] p')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('div[class*=\"leftSide\"] p') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"leftSide\"] p')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('div[class*=\"leftSide\"] p')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('div[class*=\"leftSide\"] p') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"leftSide\"] p')\u001b[22m\n\n    at HomePage.getCongratulationsText (/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/test/domain/pom/HomePage.ts:53:29)\n    at /Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/test/domain/scenarios/home.spec.ts:47:29",
+                        "location": {
+                          "file": "/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/test/domain/pom/HomePage.ts",
+                          "column": 29,
+                          "line": 53
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../pom/HomePage.ts:53\n\n  51 |   async getCongratulationsText(): Promise<string> {\n  52 |     const paragraph = this.page.locator('div[class*=\"leftSide\"] p');\n> 53 |     await expect(paragraph).toBeVisible();\n     |                             ^\n  54 |     return (await paragraph.textContent()) ?? '';\n  55 |   }\n  56 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/test/domain/pom/HomePage.ts",
+                            "column": 29,
+                            "line": 53
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('div[class*=\"leftSide\"] p')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('div[class*=\"leftSide\"] p') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"leftSide\"] p')\u001b[22m\n\n\n   at ../pom/HomePage.ts:53\n\n  51 |   async getCongratulationsText(): Promise<string> {\n  52 |     const paragraph = this.page.locator('div[class*=\"leftSide\"] p');\n> 53 |     await expect(paragraph).toBeVisible();\n     |                             ^\n  54 |     return (await paragraph.textContent()) ?? '';\n  55 |   }\n  56 |\n    at HomePage.getCongratulationsText (/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/test/domain/pom/HomePage.ts:53:29)\n    at /Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/test/domain/scenarios/home.spec.ts:47:29"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "No coverage-raw-temp.json found. Did the tests run?\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-16T17:50:59.161Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/test-results/home-Home-page-—-title-her-6e1e7-the-congratulations-message/error-context.md"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/test-results/home-Home-page-—-title-her-6e1e7-the-congratulations-message/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/rodrigo.monteiro/Documents/Demos/AWS_Transform/Angular-to-React/my-angular-app/test/domain/pom/HomePage.ts",
+                        "column": 29,
+                        "line": 53
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d318381359a9b96acb1e-77cf42ffddda4a31cc4c",
+              "file": "home.spec.ts",
+              "line": 43,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Home page — layout",
+          "file": "home.spec.ts",
+          "line": 52,
+          "column": 6,
+          "specs": [
+            {
+              "title": "displays a divider with separator role",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 148,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-16T17:51:04.600Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d318381359a9b96acb1e-85bee3cc8aa6421c3003",
+              "file": "home.spec.ts",
+              "line": 53,
+              "column": 3
+            },
+            {
+              "title": "has a router outlet present",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 112,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-16T17:51:04.879Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d318381359a9b96acb1e-6e94df3b5e372d07ee87",
+              "file": "home.spec.ts",
+              "line": 64,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Home page — pill links",
+          "file": "home.spec.ts",
+          "line": 73,
+          "column": 6,
+          "specs": [
+            {
+              "title": "renders exactly 6 pill links",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 137,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-16T17:51:05.002Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d318381359a9b96acb1e-e57d7d0892d378666750",
+              "file": "home.spec.ts",
+              "line": 92,
+              "column": 3
+            },
+            {
+              "title": "pill links have the correct text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 133,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-16T17:51:05.145Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d318381359a9b96acb1e-d7bb40b7575ffdc7d42a",
+              "file": "home.spec.ts",
+              "line": 100,
+              "column": 3
+            },
+            {
+              "title": "pill links have the correct hrefs",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 128,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-16T17:51:05.288Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d318381359a9b96acb1e-dfb5b6d2464ccfcfb21d",
+              "file": "home.spec.ts",
+              "line": 108,
+              "column": 3
+            },
+            {
+              "title": "pill links open in a new tab",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 126,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-16T17:51:05.423Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d318381359a9b96acb1e-7cf09215460ce175769a",
+              "file": "home.spec.ts",
+              "line": 116,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Home page — social links",
+          "file": "home.spec.ts",
+          "line": 127,
+          "column": 6,
+          "specs": [
+            {
+              "title": "renders 3 social links with correct labels",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 126,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "No coverage-raw-temp.json found. Did the tests run?\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-16T17:51:05.554Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d318381359a9b96acb1e-afce34e70e72c662a9d3",
+              "file": "home.spec.ts",
+              "line": 128,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-16T17:50:57.171Z",
+    "duration": 8561.945,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

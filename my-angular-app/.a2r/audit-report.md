@@ -1,120 +1,116 @@
-# React Migration Audit Report
-
-**Repository**: my-angular-app (Angular 22 → React 18 + Vite)
+# Migration Audit Report
 **Date**: 2026-09-16
-**Auditor**: Automated reward-hacking audit
+**Repository**: my-angular-app (Angular 22 → React 18 + Vite 6)
+**React source**: src/ (App.tsx, main.tsx, App.module.css, styles.css)
 
 ---
 
-## 1. BUSINESS_LOGIC: FAIL
+## 1. BUSINESS LOGIC VERIFICATION: **FAIL**
 
-**Status**: BLOCKED — all 10 scenarios failed to execute.
+**Result**: 9/10 scenarios passed, 1 failed.
 
-**Root cause (infrastructure)**:
-- `package.json` contains **unresolved git merge conflict markers** starting at line 20
-  (`<<<<<<< Updated upstream` / `=======` / `>>>>>>> Stashed changes`). This makes the
-  file invalid JSON, which prevents Vite from starting (`esbuild` parse error).
-- `test/mock-backend/server.js` uses CommonJS `require()` but `package.json` declares
-  `"type": "module"`, causing `ReferenceError: require is not defined in ES module scope`.
-
-**Failing scenarios** (all 10 — none could run):
-| # | Scenario | Status | Error |
+| # | Scenario | Status | Notes |
 |---|----------|--------|-------|
-| 1 | Displays the application title | fail | Vite cannot start (invalid package.json) |
-| 2 | Shows the framework logo | fail | Vite cannot start (invalid package.json) |
-| 3 | Shows the congratulations message | fail | Vite cannot start (invalid package.json) |
-| 4 | Displays a divider with separator role | fail | Vite cannot start (invalid package.json) |
-| 5 | Has a router outlet present | fail | Vite cannot start (invalid package.json) |
-| 6 | Renders exactly 6 pill links | fail | Vite cannot start (invalid package.json) |
-| 7 | Pill links have correct text | fail | Vite cannot start (invalid package.json) |
-| 8 | Pill links have correct hrefs | fail | Vite cannot start (invalid package.json) |
-| 9 | Pill links open in a new tab | fail | Vite cannot start (invalid package.json) |
-| 10 | Renders 3 social links with correct labels | fail | Vite cannot start (invalid package.json) |
+| 1 | displays the application title | PASS | |
+| 2 | shows the framework logo | PASS | |
+| 3 | shows the congratulations message | **FAIL** | Locator `div[class*="leftSide"] p` not found |
+| 4 | displays a divider with separator role | PASS | |
+| 5 | has a router outlet present | PASS | |
+| 6 | renders exactly 6 pill links | PASS | |
+| 7 | pill links have the correct text | PASS | |
+| 8 | pill links have the correct hrefs | PASS | |
+| 9 | pill links open in a new tab | PASS | |
+| 10 | renders 3 social links with correct labels | PASS | |
 
-Results written to `.a2r/scenario-results.json`.
+**Root cause**: `App.module.css` does not define `.leftSide` or `.rightSide` classes.
+The component `App.tsx` references `styles['leftSide']` and `styles['rightSide']`,
+but these are absent from the CSS module. At runtime, `className={styles['leftSide']}`
+resolves to `className={undefined}`, so the `<div>` is rendered with no `class`
+attribute. The POM selector `div[class*="leftSide"] p` cannot match.
+
+**Infrastructure note**: The test suite required a workaround to run. The spec file
+`home.spec.ts` uses `require()` (CJS) but `package.json` has `"type": "module"`.
+Playwright 1.63 loads specs as ESM, where `require()` is not a global. Similarly,
+`playwright.config.ts` uses `__dirname` (CJS-only). A `.a2r/preload-require.mjs`
+shim was injected via `NODE_OPTIONS="--import"` to polyfill `globalThis.require`.
 
 ---
 
-## 2. CUSTOM_ELEMENTS: PASS
+## 2. CUSTOM ELEMENTS: **PASS**
 
-`grep -rEn '<[a-z]+-[a-z-]+' --include='*.tsx' --include='*.jsx' src/` — **zero hits**.
-No custom hyphenated HTML elements found. All markup uses standard HTML elements
-(`div`, `main`, `svg`, `a`, `p`, `h1`, `span`) and the React Router `<Outlet />` component.
-
----
-
-## 3. EMOJI_ICONS: PASS
-
-One emoji found: `🎉` in `src/App.tsx:69`:
-```tsx
-<p>Congratulations! Your app is running. 🎉</p>
 ```
-This is a **content string** (user-facing message), not an icon role or button label.
-Per audit rules, content-string emoji are acceptable. **No violations.**
+grep -rEn '<[a-z]+-[a-z-]+' --include='*.tsx' --include='*.jsx' src/
+→ 0 matches
+```
+
+No custom hyphenated elements found in the React source tree.
 
 ---
 
-## 4. HANDLER_STUBS: PASS
+## 3. EMOJI ICONS: **PASS**
 
-`grep -rnE '(TODO|FIXME|console\.log\(.*(stub|placeholder|called|implement)\))'`
-across `src/**/*.{tsx,jsx,ts}` — **zero hits**. No stub handlers or placeholder TODOs found.
+```
+src/App.tsx:69: <p>Congratulations! Your app is running. 🎉</p>
+```
 
----
-
-## 5. HTTP_CALLS: PASS (N/A)
-
-`pre-analysis.json` declares `"api_surface": []` — the original Angular app has **no REST
-endpoints**. Therefore no `fetch`/`axios`/`useQuery` calls are expected. Confirmed: none found
-in the React source tree. **No violations.**
+Single hit: the 🎉 emoji is inside a content string (`<p>` tag with user-facing text),
+**not** in an icon role or button label. This is acceptable per audit rules.
 
 ---
 
-## 6. LIBRARY_RENDERING: PASS (N/A)
+## 4. HANDLER STUBS: **PASS**
 
-The original Angular `package.json` contains **no chart or map dependencies** (no echarts,
-leaflet, chart.js, d3, ng2-charts, mapbox, highcharts, or plotly). No equivalent React
-imports are required. **Not applicable.**
+```
+grep -rnE '(TODO|FIXME|console\.log\(.*(stub|placeholder|called|implement)\))' \
+  --include='*.tsx' --include='*.jsx' --include='*.ts' src/
+→ 0 matches
+```
+
+No TODO, FIXME, or stub console.log statements found.
 
 ---
 
-## 7. ROUTE_COVERAGE: PASS
+## 5. HTTP CALLS: **PASS** (N/A)
 
-| Original Route | React Router Match | Status |
-|----------------|--------------------|--------|
-| `/` (App) | `createBrowserRouter([{ path: '/', element: <App /> }])` in `main.tsx:8-10` | ✅ |
+`pre-analysis.api_surface` is empty (`[]`). The original Angular app made no REST
+API calls. No HTTP endpoints to verify.
 
-All routes from `pre-analysis.routes` are covered.
+---
+
+## 6. LIBRARY RENDERING (Charts/Maps): **PASS** (N/A)
+
+The original Angular app (`ui_framework: "none"`, Angular 22 scaffold) had no
+chart or map dependencies (no echarts, leaflet, chart.js, d3, ng2-charts in the
+original configuration). Nothing to verify.
+
+---
+
+## 7. ROUTE COVERAGE: **PASS**
+
+| Pre-analysis Route | React Router Match | Status |
+|--------------------|--------------------|--------|
+| `/` (App)          | `path: '/'` → `<App />` in `createBrowserRouter` (main.tsx:9) | ✅ |
+
+All 1 route(s) accounted for.
 
 ---
 
 ## Summary
 
-| Check | Result | Evidence |
-|-------|--------|----------|
-| BUSINESS_LOGIC | **FAIL** | Blocked: package.json merge conflicts prevent Vite from starting; 10/10 scenarios could not execute |
-| CUSTOM_ELEMENTS | PASS | 0 custom hyphenated elements |
-| EMOJI_ICONS | PASS | 1 emoji in content string (acceptable) |
-| HANDLER_STUBS | PASS | 0 TODO/FIXME/stub hits |
-| HTTP_CALLS | PASS | api_surface is empty; no calls expected or found |
-| LIBRARY_RENDERING | PASS | No chart/map deps in original |
-| ROUTE_COVERAGE | PASS | 1/1 route matched |
-| **OVERALL** | **FAIL** | Business logic verification blocked by infrastructure issues |
+| Check | Result |
+|-------|--------|
+| BUSINESS_LOGIC | **FAIL** (failing: ["shows the congratulations message"]) |
+| CUSTOM_ELEMENTS | PASS |
+| EMOJI_ICONS | PASS |
+| HANDLER_STUBS | PASS |
+| HTTP_CALLS | PASS (no API surface) |
+| LIBRARY_RENDERING | PASS (no chart/map deps) |
+| ROUTE_COVERAGE | PASS |
+| **OVERALL** | **FAIL** |
 
-### Blocking Issues Requiring Resolution
+### Blocker
 
-1. **package.json merge conflict** (CRITICAL): Lines 20-30 contain `<<<<<<<`, `=======`,
-   `>>>>>>>` git conflict markers. The React (`Stashed changes`) side should be kept and
-   the Angular (`Updated upstream`) side removed to produce valid JSON.
-
-2. **mock-backend ESM incompatibility**: `test/mock-backend/server.js` uses `require()`
-   but inherits `"type": "module"` from package.json. Either rename to `.cjs` or convert
-   to ESM imports.
-
-### Code Quality Observations (informational, not scored)
-
-- The React migration faithfully preserves the Angular scaffold page structure: SVG logo,
-  title interpolation, pill links array with map rendering, social links with aria-labels,
-  CSS Module class names matching original Angular component styles.
-- `<Outlet />` from react-router-dom correctly replaces Angular's `<router-outlet>`.
-- All 6 pill items match the original Angular `pillItems` data.
-- The 3 social links (Github, X, Youtube) preserve original aria-labels and SVG icons.
+`App.module.css` is missing `.leftSide` and `.rightSide` class definitions that
+`App.tsx` references. These CSS classes exist in the original Angular component
+styles but were not carried over during migration, causing a DOM structure mismatch
+that fails the "shows the congratulations message" scenario.
