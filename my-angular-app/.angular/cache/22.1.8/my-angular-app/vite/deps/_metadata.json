@@ -1,0 +1,36 @@
+{
+  "hash": "24b8afe6",
+  "configHash": "ea7d906d",
+  "lockfileHash": "63faa478",
+  "browserHash": "95baa533",
+  "optimized": {
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "a06da5d1",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "4b3a9002",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "5df23812",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "core-CK5_Em9Y": {
+      "file": "core-CK5_Em9Y.js",
+      "isDynamicEntry": false
+    },
+    "platform-browser-CiALavr_": {
+      "file": "platform-browser-CiALavr_.js",
+      "isDynamicEntry": false
+    }
+  }
+}
