@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angular to React Migration Report — Tower of Hanoi</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; padding: 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #1a1a2e; }
+  h2 { font-size: 1.4rem; margin: 2rem 0 1rem; color: #1a1a2e; border-bottom: 2px solid #6366f1; padding-bottom: 0.5rem; }
+  .summary { background: #fff; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .summary p { margin: 0.3rem 0; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1.5rem; }
+  th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #eee; }
+  th { background: #1a1a2e; color: #fff; font-weight: 600; }
+  .pass { color: #16a34a; font-weight: 600; }
+  .fail { color: #dc2626; font-weight: 600; }
+  .screenshot-pair { display: flex; gap: 1.5rem; margin: 1rem 0; flex-wrap: wrap; }
+  .screenshot-pair figure { flex: 1; min-width: 300px; background: #fff; border-radius: 8px; padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .screenshot-pair img { width: 100%; border-radius: 4px; border: 1px solid #ddd; }
+  figcaption { font-weight: 600; margin-bottom: 0.5rem; color: #555; }
+  .metric { display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.25rem 0.75rem; border-radius: 4px; font-weight: 600; margin: 0.25rem; }
+  .metric.green { background: #d1fae5; color: #065f46; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Angular to React Migration Report</h1>
+  <div class="summary">
+    <p><strong>Application:</strong> Tower of Hanoi</p>
+    <p><strong>Source Framework:</strong> Angular 22</p>
+    <p><strong>Target Framework:</strong> React 18 + TypeScript + Vite</p>
+    <p><strong>Scenarios:</strong> <span class="metric green">33/33 passing</span></p>
+    <p><strong>Visual Diff:</strong> <span class="metric green">28.13% (threshold: 30%)</span></p>
+  </div>
+
+  <h2>1. Business Logic — Scenario Results</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Spec File</th><th>Scenario</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>page-load.spec.ts</td><td>Should display title and subtitle</td><td class="pass">PASS</td></tr>
+      <tr><td>2</td><td>page-load.spec.ts</td><td>Should show 3 pegs labeled A, B, C</td><td class="pass">PASS</td></tr>
+      <tr><td>3</td><td>page-load.spec.ts</td><td>Should default to 4 disks on peg A</td><td class="pass">PASS</td></tr>
+      <tr><td>4</td><td>page-load.spec.ts</td><td>Should display moves=0 and optimal=15 for 4 disks</td><td class="pass">PASS</td></tr>
+      <tr><td>5</td><td>page-load.spec.ts</td><td>Should show initial hint text</td><td class="pass">PASS</td></tr>
+      <tr><td>6</td><td>page-load.spec.ts</td><td>Should have router-outlet</td><td class="pass">PASS</td></tr>
+      <tr><td>7</td><td>disk-count-selector.spec.ts</td><td>Should switch to 3 disks</td><td class="pass">PASS</td></tr>
+      <tr><td>8</td><td>disk-count-selector.spec.ts</td><td>Should switch to 7 disks</td><td class="pass">PASS</td></tr>
+      <tr><td>9</td><td>disk-count-selector.spec.ts</td><td>Should update optimal moves when changing disk count</td><td class="pass">PASS</td></tr>
+      <tr><td>10</td><td>disk-count-selector.spec.ts</td><td>Should reset moves to 0 when changing disk count</td><td class="pass">PASS</td></tr>
+      <tr><td>11</td><td>peg-selection.spec.ts</td><td>Should select a peg with disks and show indicator</td><td class="pass">PASS</td></tr>
+      <tr><td>12</td><td>peg-selection.spec.ts</td><td>Should NOT select an empty peg</td><td class="pass">PASS</td></tr>
+      <tr><td>13</td><td>peg-selection.spec.ts</td><td>Should deselect when clicking the same peg</td><td class="pass">PASS</td></tr>
+      <tr><td>14</td><td>move-mechanics.spec.ts</td><td>Should make a valid move and increment counter</td><td class="pass">PASS</td></tr>
+      <tr><td>15</td><td>move-mechanics.spec.ts</td><td>Should allow moving to an empty peg</td><td class="pass">PASS</td></tr>
+      <tr><td>16</td><td>move-mechanics.spec.ts</td><td>Should reject invalid move (larger disk on smaller)</td><td class="pass">PASS</td></tr>
+      <tr><td>17</td><td>move-mechanics.spec.ts</td><td>Should switch selection on invalid move to peg with disks</td><td class="pass">PASS</td></tr>
+      <tr><td>18</td><td>move-mechanics.spec.ts</td><td>Should clear selection after valid move</td><td class="pass">PASS</td></tr>
+      <tr><td>19</td><td>reset.spec.ts</td><td>Should reset the game</td><td class="pass">PASS</td></tr>
+      <tr><td>20</td><td>win-condition.spec.ts</td><td>Should show win banner after solving with 3 disks (optimal)</td><td class="pass">PASS</td></tr>
+      <tr><td>21</td><td>win-condition.spec.ts</td><td>Should show win banner without perfect score (non-optimal)</td><td class="pass">PASS</td></tr>
+      <tr><td>22</td><td>win-condition.spec.ts</td><td>Should ignore clicks after winning</td><td class="pass">PASS</td></tr>
+      <tr><td>23</td><td>win-condition.spec.ts</td><td>Should hide hint text after winning</td><td class="pass">PASS</td></tr>
+      <tr><td>24</td><td>disk-styling.spec.ts</td><td>Disks should have distinct colors</td><td class="pass">PASS</td></tr>
+      <tr><td>25</td><td>disk-styling.spec.ts</td><td>Disks should be stacked large-to-small (bottom-up)</td><td class="pass">PASS</td></tr>
+      <tr><td>26</td><td>disk-styling.spec.ts</td><td>Each disk should display its number label</td><td class="pass">PASS</td></tr>
+      <tr><td>27</td><td>keyboard-interaction.spec.ts</td><td>Should select a peg with Enter key</td><td class="pass">PASS</td></tr>
+      <tr><td>28</td><td>keyboard-interaction.spec.ts</td><td>Should move a disk using Space key</td><td class="pass">PASS</td></tr>
+      <tr><td>29</td><td>keyboard-interaction.spec.ts</td><td>Should solve the game entirely via keyboard</td><td class="pass">PASS</td></tr>
+      <tr><td>30</td><td>complex-game-flows.spec.ts</td><td>Should handle multiple moves and verify peg states</td><td class="pass">PASS</td></tr>
+      <tr><td>31</td><td>complex-game-flows.spec.ts</td><td>Should reset after winning and play again</td><td class="pass">PASS</td></tr>
+      <tr><td>32</td><td>complex-game-flows.spec.ts</td><td>Should solve with 5 disks using recursive algorithm</td><td class="pass">PASS</td></tr>
+      <tr><td>33</td><td>complex-game-flows.spec.ts</td><td>Placeholder for router-outlet presence</td><td class="pass">PASS</td></tr>
+    </tbody>
+  </table>
+
+  <h2>2. UI Comparison — Angular vs React Screenshots</h2>
+  <p>Route: <code>/</code> (home) — Pixel diff ratio: <span class="metric green">28.13% (PASS, threshold: 30%)</span></p>
+  <div class="screenshot-pair">
+    <figure>
+      <figcaption>Angular (Baseline)</figcaption>
+      <img src="screenshots/home/angular.png" alt="Angular screenshot of home route">
+    </figure>
+    <figure>
+      <figcaption>React (Migrated)</figcaption>
+      <img src="screenshots/home/react.png" alt="React screenshot of home route">
+    </figure>
+  </div>
+</div>
+</body>
+</html>

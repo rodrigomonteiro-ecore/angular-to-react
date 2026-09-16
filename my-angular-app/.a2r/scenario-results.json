@@ -1,0 +1,194 @@
+[
+  {
+    "file": "complex-game-flows.spec.ts",
+    "scenario": "should handle multiple moves and verify peg states",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "complex-game-flows.spec.ts",
+    "scenario": "should reset after winning and play again",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "complex-game-flows.spec.ts",
+    "scenario": "should solve with 5 disks using recursive algorithm",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "disk-count-selector.spec.ts",
+    "scenario": "should switch to 3 disks",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "disk-count-selector.spec.ts",
+    "scenario": "should switch to 7 disks",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "disk-count-selector.spec.ts",
+    "scenario": "should update optimal moves when changing disk count",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "disk-count-selector.spec.ts",
+    "scenario": "should reset moves to 0 when changing disk count",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "disk-styling.spec.ts",
+    "scenario": "disks should have distinct colors",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "disk-styling.spec.ts",
+    "scenario": "disks should be stacked large-to-small (bottom-up)",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "disk-styling.spec.ts",
+    "scenario": "each disk should display its number label",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "keyboard-interaction.spec.ts",
+    "scenario": "should select a peg with Enter key",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "keyboard-interaction.spec.ts",
+    "scenario": "should move a disk using Space key",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "keyboard-interaction.spec.ts",
+    "scenario": "should solve the game entirely via keyboard",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "move-mechanics.spec.ts",
+    "scenario": "should make a valid move and increment counter",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "move-mechanics.spec.ts",
+    "scenario": "should allow moving to an empty peg",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "move-mechanics.spec.ts",
+    "scenario": "should reject invalid move (larger disk on smaller)",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "move-mechanics.spec.ts",
+    "scenario": "should switch selection on invalid move to peg with disks",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "move-mechanics.spec.ts",
+    "scenario": "should clear selection after valid move",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "page-load.spec.ts",
+    "scenario": "should display title and subtitle",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "page-load.spec.ts",
+    "scenario": "should show 3 pegs labeled A, B, C",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "page-load.spec.ts",
+    "scenario": "should default to 4 disks on peg A",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "page-load.spec.ts",
+    "scenario": "should display moves=0 and optimal=15 for 4 disks",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "page-load.spec.ts",
+    "scenario": "should show initial hint text",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "page-load.spec.ts",
+    "scenario": "should have router-outlet",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "peg-selection.spec.ts",
+    "scenario": "should select a peg with disks and show indicator",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "peg-selection.spec.ts",
+    "scenario": "should NOT select an empty peg",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "peg-selection.spec.ts",
+    "scenario": "should deselect when clicking the same peg",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "reset.spec.ts",
+    "scenario": "should reset the game",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "win-condition.spec.ts",
+    "scenario": "should show win banner after solving with 3 disks (optimal)",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "win-condition.spec.ts",
+    "scenario": "should show win banner without perfect score (non-optimal)",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "win-condition.spec.ts",
+    "scenario": "should ignore clicks after winning",
+    "status": "pass",
+    "error": ""
+  },
+  {
+    "file": "win-condition.spec.ts",
+    "scenario": "should hide hint text after winning",
+    "status": "pass",
+    "error": ""
+  }
+]
