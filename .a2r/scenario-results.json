@@ -1,0 +1,12 @@
+[
+  { "file": "home.spec.ts", "scenario": "Home page — title & hero > displays the application title", "status": "pass", "error": "" },
+  { "file": "home.spec.ts", "scenario": "Home page — title & hero > shows the framework logo", "status": "pass", "error": "" },
+  { "file": "home.spec.ts", "scenario": "Home page — title & hero > shows the congratulations message", "status": "pass", "error": "" },
+  { "file": "home.spec.ts", "scenario": "Home page — layout > displays a divider with separator role", "status": "pass", "error": "" },
+  { "file": "home.spec.ts", "scenario": "Home page — layout > has a router outlet present", "status": "pass", "error": "" },
+  { "file": "home.spec.ts", "scenario": "Home page — pill links > renders exactly 6 pill links", "status": "pass", "error": "" },
+  { "file": "home.spec.ts", "scenario": "Home page — pill links > pill links have the correct text", "status": "pass", "error": "" },
+  { "file": "home.spec.ts", "scenario": "Home page — pill links > pill links have the correct hrefs", "status": "pass", "error": "" },
+  { "file": "home.spec.ts", "scenario": "Home page — pill links > pill links open in a new tab", "status": "pass", "error": "" },
+  { "file": "home.spec.ts", "scenario": "Home page — social links > renders 3 social links with correct labels", "status": "pass", "error": "" }
+]
